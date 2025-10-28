@@ -1,12 +1,12 @@
-import { Calendar, Clock, BookOpen, DollarSign, CheckCircle } from 'lucide-react';
+import { Calendar, Clock, BookOpen, DollarSign, CheckCircle, BookText } from 'lucide-react';
 
 function App() {
   return (
     <div className="min-h-screen bg-white">
       <header className="bg-[#0e1f3e] text-white py-8 px-4">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-5xl font-bold mb-2">SAT Bootcamp</h1>
-          <p className="text-xl text-[#f7e0e0]">Strategy Class for December 6 Exam</p>
+          <h1 className="text-5xl font-bold mb-2 text-[#ff5a5f]">SAT PREP</h1>
+          <p className="text-xl text-[#f7e0e0]">Practical strategies to approach the SAT, practice questions and more.</p>
         </div>
       </header>
 
@@ -23,16 +23,26 @@ function App() {
                 Master the SAT
               </h2>
               <p className="text-2xl text-[#f7e0e0] mb-6">
-                2-Week Intensive Bootcamp for December 6 Exam
+                $199 each session (can choose math or English) or $350 for both
               </p>
-              <div className="flex items-center space-x-6 text-white">
-                <div className="flex items-center">
-                  <Calendar className="mr-2 text-[#ca3433]" size={24} />
-                  <span className="text-lg">Nov 23 & 30</span>
+              <div className="flex flex-col space-y-4 text-white">
+                <div className="flex items-center space-x-6">
+                  <div className="flex items-center">
+                    <Calendar className="mr-2 text-[#ca3433]" size={24} />
+                    <span className="text-lg">SUNDAYS 10AM - 2PM</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Clock className="mr-2 text-[#ca3433]" size={24} />
+                    <span className="text-lg">2 WEEKS (4HOURS PER SESSION)</span>
+                  </div>
                 </div>
                 <div className="flex items-center">
-                  <Clock className="mr-2 text-[#ca3433]" size={24} />
-                  <span className="text-lg">10 AM - 2 PM</span>
+                  <BookText className="mr-2 text-[#ca3433]" size={24} />
+                  <span className="text-lg">FULL PRACTICE EXAM INCLUDING ALL MATERIALS NEEDED</span>
+                </div>
+                <div className="flex items-center">
+                  <BookOpen className="mr-2 text-[#ca3433]" size={24} />
+                  <span className="text-lg">ENGLISH AND MATH</span>
                 </div>
               </div>
             </div>
@@ -46,7 +56,7 @@ function App() {
             Master the SAT in 2 Weeks
           </h2>
           <p className="text-xl text-[#0e1f3e] text-center mb-8">
-            Intensive bootcamp designed to prepare you for the December 6 exam
+            Intensive bootcamp designed to prepare you for upcoming SAT exams
           </p>
         </div>
 
@@ -54,49 +64,41 @@ function App() {
           <div className="bg-white border-2 border-[#0e1f3e] rounded-xl p-8 shadow-lg">
             <div className="flex items-center mb-4">
               <Calendar className="text-[#ca3433] mr-3" size={32} />
-              <h3 className="text-2xl font-bold text-[#0e1f3e]">Schedule</h3>
+              <h3 className="text-2xl font-bold text-[#0e1f3e]">FOR DEC 6 EXAM</h3>
             </div>
             <ul className="space-y-3 text-lg text-gray-700">
               <li className="flex items-start">
                 <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-                <span><strong>Duration:</strong> 2 weeks</span>
+                <span><strong>Bootcamp session:</strong></span>
               </li>
               <li className="flex items-start">
                 <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-                <span><strong>Sessions:</strong> November 23 & November 30</span>
+                <span>November 23, 2025</span>
               </li>
               <li className="flex items-start">
                 <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-                <span><strong>Day:</strong> Sundays</span>
-              </li>
-              <li className="flex items-start">
-                <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-                <span><strong>Time:</strong> 10:00 AM - 2:00 PM</span>
+                <span>November 30, 2025</span>
               </li>
             </ul>
           </div>
 
           <div className="bg-white border-2 border-[#0e1f3e] rounded-xl p-8 shadow-lg">
             <div className="flex items-center mb-4">
-              <BookOpen className="text-[#ca3433] mr-3" size={32} />
-              <h3 className="text-2xl font-bold text-[#0e1f3e]">Structure</h3>
+              <Calendar className="text-[#ca3433] mr-3" size={32} />
+              <h3 className="text-2xl font-bold text-[#0e1f3e]">FOR NOV 8 EXAM</h3>
             </div>
             <ul className="space-y-3 text-lg text-gray-700">
               <li className="flex items-start">
                 <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-                <span><strong>Session Length:</strong> 4 hours each</span>
+                <span><strong>Bootcamp session:</strong></span>
               </li>
               <li className="flex items-start">
                 <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-                <span><strong>Day 1:</strong> English (Nov 23)</span>
+                <span>October 26, 2025</span>
               </li>
               <li className="flex items-start">
                 <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-                <span><strong>Day 2:</strong> Math (Nov 30)</span>
-              </li>
-              <li className="flex items-start">
-                <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-                <span><strong>Format:</strong> Intensive practice & strategy</span>
+                <span>November 2, 2025</span>
               </li>
             </ul>
           </div>
@@ -206,7 +208,7 @@ function App() {
 
         <div className="mt-12 text-center">
           <p className="text-2xl text-[#0e1f3e] font-semibold mb-4">
-            Prepare for the December 6 SAT Exam
+            Prepare for the November 8 & December 6 SAT Exams
           </p>
           <p className="text-lg text-gray-600">
             Limited spots available. Register now to secure your place.
