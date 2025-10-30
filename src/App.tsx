@@ -82,26 +82,6 @@ function App() {
             </ul>
           </div>
 
-          <div className="bg-white border-2 border-[#0e1f3e] rounded-xl p-8 shadow-lg">
-            <div className="flex items-center mb-4">
-              <Calendar className="text-[#ca3433] mr-3" size={32} />
-              <h3 className="text-2xl font-bold text-[#0e1f3e]">FOR NOV 8 EXAM</h3>
-            </div>
-            <ul className="space-y-3 text-lg text-gray-700">
-              <li className="flex items-start">
-                <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-                <span><strong>Bootcamp session:</strong></span>
-              </li>
-              <li className="flex items-start">
-                <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-                <span>October 26, 2025</span>
-              </li>
-              <li className="flex items-start">
-                <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-                <span>November 2, 2025</span>
-              </li>
-            </ul>
-          </div>
         </div>
 
         <div className="bg-[#0e1f3e] rounded-2xl p-10 mb-12 text-white">
