@@ -182,6 +182,14 @@ function App() {
                   <span>Save $48</span>
                 </li>
               </ul>
+              <a
+                href="https://buy.stripe.com/4gM8wI1dO33Q0hz8czdfG05"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-block bg-white text-[#ca3433] font-semibold py-3 px-6 rounded-lg shadow hover:bg-[#f7e0e0] transition-colors"
+              >
+                Register Now - $350
+              </a>
             </div>
           </div>
         </div>
