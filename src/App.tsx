@@ -196,7 +196,7 @@ function App() {
 
         <div className="mt-12 text-center">
           <p className="text-2xl text-[#0e1f3e] font-semibold mb-4">
-            Prepare for the November 8 & December 6 SAT Exams
+            Prepare for the December 6 SAT Exams
           </p>
           <p className="text-lg text-gray-600">
             Limited spots available. Register now to secure your place.
