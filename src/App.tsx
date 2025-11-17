@@ -135,6 +135,14 @@ function App() {
                   <span>Practice materials included</span>
                 </li>
               </ul>
+              <a
+                href="https://buy.stripe.com/eVq14ge0A33Q9S978vdfG06"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-block bg-[#0e1f3e] text-white font-semibold py-3 px-6 rounded-lg shadow hover:bg-[#ca3433] transition-colors"
+              >
+                Register - $199
+              </a>
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow-lg text-center border-2 border-[#0e1f3e] hover:border-[#ca3433] transition-colors">
@@ -155,6 +163,14 @@ function App() {
                   <span>Practice materials included</span>
                 </li>
               </ul>
+              <a
+                href="https://buy.stripe.com/eVq14ge0A33Q9S978vdfG06"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-block bg-[#0e1f3e] text-white font-semibold py-3 px-6 rounded-lg shadow hover:bg-[#ca3433] transition-colors"
+              >
+                Register - $199
+              </a>
             </div>
 
             <div className="bg-[#ca3433] text-white rounded-xl p-6 shadow-lg text-center border-2 border-[#ca3433] transform md:scale-105">
