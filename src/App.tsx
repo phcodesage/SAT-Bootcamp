@@ -5,7 +5,7 @@ function App() {
     <div className="min-h-screen bg-white">
       <header className="bg-[#0e1f3e] text-white py-8 px-4">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-5xl font-bold mb-2 text-[#ff5a5f]">SAT PREP</h1>
+          <h1 className="text-5xl font-bold mb-2 text-[#ff5a5f]">SAT BOOTCAMP</h1>
           <p className="text-xl text-[#f7e0e0]">Practical strategies to approach the SAT, practice questions and more.</p>
         </div>
       </header>
@@ -60,25 +60,67 @@ function App() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
           <div className="bg-white border-2 border-[#0e1f3e] rounded-xl p-8 shadow-lg">
             <div className="flex items-center mb-4">
               <Calendar className="text-[#ca3433] mr-3" size={32} />
-              <h3 className="text-2xl font-bold text-[#0e1f3e]">FOR DEC 6 EXAM</h3>
+              <h3 className="text-2xl font-bold text-[#0e1f3e]">MARCH BOOTCAMP</h3>
             </div>
             <ul className="space-y-3 text-lg text-gray-700">
               <li className="flex items-start">
                 <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-                <span><strong>Bootcamp session:</strong></span>
+                <span><strong>Bootcamp sessions:</strong></span>
               </li>
               <li className="flex items-start">
                 <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-                <span>November 23, 2025</span>
+                <span>March 1, 2026</span>
               </li>
               <li className="flex items-start">
                 <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-                <span>November 30, 2025</span>
+                <span>March 8, 2026</span>
               </li>
+            </ul>
+          </div>
+
+          <div className="bg-white border-2 border-[#0e1f3e] rounded-xl p-8 shadow-lg">
+            <div className="flex items-center mb-4">
+              <Calendar className="text-[#ca3433] mr-3" size={32} />
+              <h3 className="text-2xl font-bold text-[#0e1f3e]">APRIL BOOTCAMP</h3>
+            </div>
+            <ul className="space-y-3 text-lg text-gray-700">
+              <li className="flex items-start">
+                <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
+                <span><strong>Bootcamp sessions:</strong></span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
+                <span>April 19, 2026</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
+                <span>April 26, 2026</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="bg-white border-2 border-[#0e1f3e] rounded-xl p-8 shadow-lg">
+            <div className="flex items-center mb-4">
+              <Calendar className="text-[#ca3433] mr-3" size={32} />
+              <h3 className="text-2xl font-bold text-[#0e1f3e]">MAY BOOTCAMP</h3>
+            </div>
+            <ul className="space-y-3 text-lg text-gray-700">
+              <li className="flex items-start">
+                <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
+                <span><strong>Bootcamp sessions:</strong></span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
+                <span>May 24, 2026</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
+                <span>May 31, 2026</span>
+              </li>Choose from multiple dates
             </ul>
           </div>
 
@@ -148,7 +190,7 @@ function App() {
             <div className="bg-white rounded-xl p-6 shadow-lg text-center border-2 border-[#0e1f3e] hover:border-[#ca3433] transition-colors">
               <h4 className="text-2xl font-bold text-[#0e1f3e] mb-4">Math Only</h4>
               <p className="text-5xl font-bold text-[#ca3433] mb-4">$199</p>
-              <p className="text-gray-600 mb-4">November 30</p>
+              <p className="text-gray-600 mb-4">Choose from multiple dates</p>
               <ul className="text-left space-y-2 text-gray-700">
                 <li className="flex items-start">
                   <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={16} />
@@ -212,7 +254,7 @@ function App() {
 
         <div className="mt-12 text-center">
           <p className="text-2xl text-[#0e1f3e] font-semibold mb-4">
-            Prepare for the December 6 SAT Exams
+            Join our SAT Bootcamp in March, April, or May 2026
           </p>
           <p className="text-lg text-gray-600">
             Limited spots available. Register now to secure your place.
