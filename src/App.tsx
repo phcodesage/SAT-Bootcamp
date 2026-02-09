@@ -162,7 +162,7 @@ function App() {
             <div className="bg-white rounded-xl p-6 shadow-lg text-center border-2 border-[#0e1f3e] hover:border-[#ca3433] transition-colors">
               <h4 className="text-2xl font-bold text-[#0e1f3e] mb-4">English Only</h4>
               <p className="text-5xl font-bold text-[#ca3433] mb-4">$199</p>
-              <p className="text-gray-600 mb-4">November 23</p>
+              <p className="text-gray-600 mb-4">Choose from multiple dates</p>
               <ul className="text-left space-y-2 text-gray-700">
                 <li className="flex items-start">
                   <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={16} />
