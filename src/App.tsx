@@ -4,7 +4,6 @@ import {
   CheckCircle,
   Clock,
   BookOpen,
-  BookText,
   DollarSign,
   GraduationCap,
   Star,
@@ -68,7 +67,7 @@ function App() {
           <p className="mt-2 text-slate-600">
             {selectedProgram === 'bootcamp'
               ? 'Practical strategies to approach the SAT, practice questions and more.'
-              : 'State exam prep for Grades 3-8 with structured support and expert instruction.'}
+              : 'SAT prep with structured support and expert instruction.'}
           </p>
         </div>
 
@@ -112,14 +111,7 @@ function SatBootcampSection() {
                     <span className="text-base md:text-lg">2 WEEKS (4 HOURS PER SESSION)</span>
                   </div>
                 </div>
-                <div className="flex items-center">
-                  <BookText className="mr-2 text-[#ca3433]" size={24} />
-                  <span className="text-base md:text-lg">FULL PRACTICE EXAM INCLUDING ALL MATERIALS NEEDED</span>
-                </div>
-                <div className="flex items-center">
-                  <BookOpen className="mr-2 text-[#ca3433]" size={24} />
-                  <span className="text-base md:text-lg">ENGLISH AND MATH</span>
-                </div>
+
               </div>
             </div>
           </div>
@@ -131,29 +123,7 @@ function SatBootcampSection() {
         <p className="text-lg md:text-xl text-[#0e1f3e] text-center">Intensive bootcamp designed to prepare you for upcoming SAT exams</p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8 mb-16">
-        <div className="bg-white border-2 border-[#0e1f3e] rounded-xl p-8 shadow-lg">
-          <div className="flex items-center mb-4">
-            <Calendar className="text-[#ca3433] mr-3" size={32} />
-            <h4 className="text-2xl font-bold text-[#0e1f3e]">MARCH BOOTCAMP</h4>
-          </div>
-          <ul className="space-y-3 text-lg text-gray-700">
-            <li className="flex items-start">
-              <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-              <span>
-                <strong>Bootcamp sessions:</strong>
-              </span>
-            </li>
-            <li className="flex items-start">
-              <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-              <span>March 1, 2026</span>
-            </li>
-            <li className="flex items-start">
-              <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0 mt-1" size={20} />
-              <span>March 8, 2026</span>
-            </li>
-          </ul>
-        </div>
+      <div className="grid md:grid-cols-2 gap-8 mb-16">
 
         <div className="bg-white border-2 border-[#0e1f3e] rounded-xl p-8 shadow-lg">
           <div className="flex items-center mb-4">
@@ -331,7 +301,7 @@ function SatBootcampSection() {
       </div>
 
       <div className="mt-12 text-center">
-        <p className="text-2xl text-[#0e1f3e] font-semibold mb-4">Join our SAT Bootcamp in March, April, or May 2026</p>
+        <p className="text-2xl text-[#0e1f3e] font-semibold mb-4">Join our SAT Bootcamp in April or May 2026</p>
         <p className="text-lg text-gray-600">Limited spots available. Register now to secure your place.</p>
       </div>
     </>
@@ -351,7 +321,7 @@ function SatPrepSection() {
               alt="Exceed Learning logo"
               className="h-10 md:h-12 w-auto"
             />
-            <h3 className="text-3xl md:text-4xl font-bold text-[#0e1f3e] mt-2">State Exam Prep for Grades 3-8</h3>
+            <h3 className="text-3xl md:text-4xl font-bold text-[#0e1f3e] mt-2">SAT Prep Course</h3>
           </div>
           <div className="flex flex-wrap gap-3">
             <a href="#schedule" className="bg-[#0e1f3e] text-white px-5 py-3 rounded-lg font-semibold hover:bg-[#1b2f57] transition-colors">Schedule</a>
@@ -360,33 +330,20 @@ function SatPrepSection() {
           </div>
         </div>
 
-        <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 mb-6">
-          <p className="text-xl font-semibold text-[#0e1f3e]">Coming Soon for 2027</p>
-          <p className="text-slate-700 mt-2">Registration opens soon</p>
-          <div className="mt-4 flex flex-wrap gap-3">
-            <a id="enroll" href={prepStripeLink} target="_blank" rel="noopener noreferrer" className="bg-[#ca3433] text-white px-5 py-3 rounded-lg font-semibold">Enroll Now</a>
-            <button id="schedule" type="button" className="bg-white border border-slate-300 text-slate-900 px-5 py-3 rounded-lg font-semibold">See Schedule</button>
-            <button type="button" className="bg-white border border-slate-300 text-slate-900 px-5 py-3 rounded-lg font-semibold">2027 Program</button>
-          </div>
-          <p className="text-slate-600 mt-4">Stay tuned for dates and registration details</p>
-        </div>
+
 
         <div className="grid md:grid-cols-2 gap-4">
           <div className="rounded-xl bg-[#f7e0e0] border border-[#efc8c8] p-5">
-            <p className="font-bold text-[#0e1f3e] mb-2">EXAM SEP 12</p>
-            <p>Bootcamps June 29, Aug 9 and 16, Aug 30 and Sep 6</p>
+            <p className="font-bold text-[#0e1f3e]">EXAM SEP 12 - Bootcamps June 29 Aug 9 and 16, Aug 30 and Sep 6</p>
           </div>
           <div className="rounded-xl bg-[#f7e0e0] border border-[#efc8c8] p-5">
-            <p className="font-bold text-[#0e1f3e] mb-2">EXAM OCT 2</p>
-            <p>Bootcamps Sep 20 and 27</p>
+            <p className="font-bold text-[#0e1f3e]">EXAM OCT 2 - Bootcamps Sep 20 and 27</p>
           </div>
           <div className="rounded-xl bg-[#f7e0e0] border border-[#efc8c8] p-5">
-            <p className="font-bold text-[#0e1f3e] mb-2">EXAM NOV 7</p>
-            <p>Bootcamps October 25 and Nov 1</p>
+            <p className="font-bold text-[#0e1f3e]">EXAM NOV 7 - Bootcamps october 25 and nov 1</p>
           </div>
           <div className="rounded-xl bg-[#f7e0e0] border border-[#efc8c8] p-5">
-            <p className="font-bold text-[#0e1f3e] mb-2">EXAM DEC 5</p>
-            <p>Bootcamps Nov 22 and 29</p>
+            <p className="font-bold text-[#0e1f3e]">EXAM DEC 5 - Bootcamps Nov 22 and 29</p>
           </div>
         </div>
       </section>
@@ -425,62 +382,7 @@ function SatPrepSection() {
         </div>
       </section>
 
-      <section id="schedule" className="mb-10">
-        <h3 className="text-3xl font-bold text-[#0e1f3e] mb-6">Schedule by Grade</h3>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-white border border-slate-200 rounded-xl p-6">
-            <h4 className="text-2xl font-bold text-[#0e1f3e] mb-4">Grades 3-4</h4>
-            <ul className="space-y-3">
-              <li>
-                <strong>ELA</strong><br />
-                6 weeks<br />
-                Mondays, 4-5 PM<br />
-                Starts March 8
-              </li>
-              <li>
-                <strong>Math</strong><br />
-                8 weeks<br />
-                Wednesdays, 4-5 PM<br />
-                Starts March 11
-              </li>
-            </ul>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-xl p-6">
-            <h4 className="text-2xl font-bold text-[#0e1f3e] mb-4">Grades 5-6</h4>
-            <ul className="space-y-3">
-              <li>
-                <strong>ELA</strong><br />
-                6 weeks<br />
-                Tuesdays, 4-5 PM<br />
-                Starts March 9
-              </li>
-              <li>
-                <strong>Math</strong><br />
-                8 weeks<br />
-                Thursdays, 4-5 PM<br />
-                Starts March 12
-              </li>
-            </ul>
-          </div>
-          <div className="bg-white border border-slate-200 rounded-xl p-6">
-            <h4 className="text-2xl font-bold text-[#0e1f3e] mb-4">Grades 7-8</h4>
-            <ul className="space-y-3">
-              <li>
-                <strong>ELA</strong><br />
-                6 weeks<br />
-                Mondays, 5-6 PM<br />
-                Starts March 8
-              </li>
-              <li>
-                <strong>Math</strong><br />
-                8 weeks<br />
-                Fridays, 5-6 PM<br />
-                Starts March 13
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+
 
       <section id="pricing" className="mb-12">
         <h3 className="text-3xl font-bold text-[#0e1f3e] mb-2">Program Pricing</h3>
