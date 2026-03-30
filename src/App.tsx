@@ -38,22 +38,20 @@ function App() {
             <button
               type="button"
               onClick={() => setSelectedProgram('bootcamp')}
-              className={`rounded-xl px-5 py-3 font-semibold transition-all ${
-                selectedProgram === 'bootcamp'
+              className={`rounded-xl px-5 py-3 font-semibold transition-all ${selectedProgram === 'bootcamp'
                   ? 'bg-[#ca3433] text-white shadow-lg'
                   : 'bg-white text-[#0e1f3e] hover:bg-[#f7e0e0]'
-              }`}
+                }`}
             >
               SAT BOOTCAMP
             </button>
             <button
               type="button"
               onClick={() => setSelectedProgram('prep')}
-              className={`rounded-xl px-5 py-3 font-semibold transition-all ${
-                selectedProgram === 'prep'
+              className={`rounded-xl px-5 py-3 font-semibold transition-all ${selectedProgram === 'prep'
                   ? 'bg-[#ca3433] text-white shadow-lg'
                   : 'bg-white text-[#0e1f3e] hover:bg-[#f7e0e0]'
-              }`}
+                }`}
             >
               SAT PREP COURSE
             </button>
@@ -346,6 +344,9 @@ function SatPrepSection() {
             <p className="font-bold text-[#0e1f3e]">EXAM DEC 5 - Bootcamps Nov 22 and 29</p>
           </div>
         </div>
+        <div className="mt-6 rounded-xl bg-[#0e1f3e] text-white p-5 text-center">
+          <p className="text-2xl font-bold">PRICE: $3,300</p>
+        </div>
       </section>
 
       <section className="mb-10">
@@ -388,7 +389,7 @@ function SatPrepSection() {
         <h3 className="text-3xl font-bold text-[#0e1f3e] mb-2">Program Pricing</h3>
         <p className="text-slate-700 mb-6">Choose the package that works best for your student</p>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <div className="bg-white border border-slate-200 rounded-xl p-6">
             <h4 className="text-2xl font-bold text-[#0e1f3e]">ELA Only</h4>
             <p className="text-4xl font-bold text-[#ca3433] mt-3">$329</p>
@@ -401,24 +402,13 @@ function SatPrepSection() {
             <a href={prepStripeLink} target="_blank" rel="noopener noreferrer" className="mt-6 block w-full rounded-lg bg-[#0e1f3e] text-white py-3 font-semibold text-center">Enroll in ELA</a>
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-xl p-6">
-            <h4 className="text-2xl font-bold text-[#0e1f3e]">Math Only</h4>
-            <p className="text-4xl font-bold text-[#ca3433] mt-3">$429</p>
-            <p className="mt-2 text-slate-700">Complete Math prep</p>
-            <ul className="mt-4 space-y-2 text-slate-700">
-              <li className="flex items-start"><CheckCircle className="mr-2 mt-0.5 text-[#ca3433]" size={16} />Weekly Math sessions</li>
-              <li className="flex items-start"><CheckCircle className="mr-2 mt-0.5 text-[#ca3433]" size={16} />Practice problems</li>
-              <li className="flex items-start"><CheckCircle className="mr-2 mt-0.5 text-[#ca3433]" size={16} />Progress tracking</li>
-            </ul>
-            <a href={prepStripeLink} target="_blank" rel="noopener noreferrer" className="mt-6 block w-full rounded-lg bg-[#0e1f3e] text-white py-3 font-semibold text-center">Enroll in Math</a>
-          </div>
+
 
           <div className="bg-[#ca3433] text-white border border-[#ca3433] rounded-xl p-6">
             <p className="inline-block rounded-full bg-white text-[#ca3433] text-xs font-bold px-3 py-1">BEST VALUE</p>
             <h4 className="text-2xl font-bold mt-3">Both Subjects</h4>
-            <p className="text-4xl font-bold mt-3">$700</p>
+            <p className="text-4xl font-bold mt-3">$3,300</p>
             <p className="mt-2 text-[#f7e0e0]">Complete exam prep</p>
-            <p className="mt-2 font-semibold">Save $58!</p>
             <ul className="mt-4 space-y-2">
               <li className="flex items-start"><CheckCircle className="mr-2 mt-0.5" size={16} />All ELA and Math sessions</li>
               <li className="flex items-start"><CheckCircle className="mr-2 mt-0.5" size={16} />Complete materials</li>
