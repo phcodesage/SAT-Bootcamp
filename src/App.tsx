@@ -307,7 +307,7 @@ function SatBootcampSection() {
 }
 
 function SatPrepSection() {
-  const prepStripeLink = 'https://buy.stripe.com/6oU6oAg8IcEq1lDcsPdfG0c';
+  const prepStripeLink = 'https://buy.stripe.com/4gM8wI1dO33Q0hz8czdfG05';
 
   return (
     <>
@@ -320,6 +320,10 @@ function SatPrepSection() {
               className="h-10 md:h-12 w-auto"
             />
             <h3 className="text-3xl md:text-4xl font-bold text-[#0e1f3e] mt-2">SAT Prep Course</h3>
+            <div className="mt-3">
+              <span className="inline-block bg-[#ca3433] text-white font-bold px-4 py-2 rounded-lg text-lg">ENGLISH AND MATH</span>
+            </div>
+            <p className="mt-3 text-lg text-slate-700 font-semibold">FULL PRACTICE EXAM INCLUDING ALL MATERIALS NEEDED</p>
           </div>
           <div className="flex flex-wrap gap-3">
             <a href="#schedule" className="bg-[#0e1f3e] text-white px-5 py-3 rounded-lg font-semibold hover:bg-[#1b2f57] transition-colors">Schedule</a>
@@ -364,7 +368,7 @@ function SatPrepSection() {
               <GraduationCap className="text-[#ca3433]" />
               <h4 className="text-xl font-semibold">Expert Instructors</h4>
             </div>
-            <p>Learn from experienced educators who understand state exam requirements inside and out</p>
+            <p>Learn from experienced educators who understand SAT requirements inside and out</p>
           </div>
           <div className="bg-white border border-slate-200 rounded-xl p-6">
             <div className="flex items-center gap-3 mb-3">
@@ -387,34 +391,23 @@ function SatPrepSection() {
 
       <section id="pricing" className="mb-12">
         <h3 className="text-3xl font-bold text-[#0e1f3e] mb-2">Program Pricing</h3>
-        <p className="text-slate-700 mb-6">Choose the package that works best for your student</p>
+        <p className="text-slate-700 mb-6">Complete SAT Prep Course - English and Math</p>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <div className="bg-white border border-slate-200 rounded-xl p-6">
-            <h4 className="text-2xl font-bold text-[#0e1f3e]">ELA Only</h4>
-            <p className="text-4xl font-bold text-[#ca3433] mt-3">$329</p>
-            <p className="mt-2 text-slate-700">Complete ELA prep</p>
-            <ul className="mt-4 space-y-2 text-slate-700">
-              <li className="flex items-start"><CheckCircle className="mr-2 mt-0.5 text-[#ca3433]" size={16} />Weekly ELA sessions</li>
-              <li className="flex items-start"><CheckCircle className="mr-2 mt-0.5 text-[#ca3433]" size={16} />Practice materials</li>
-              <li className="flex items-start"><CheckCircle className="mr-2 mt-0.5 text-[#ca3433]" size={16} />Progress tracking</li>
+        <div className="max-w-lg mx-auto">
+          <div className="bg-[#ca3433] text-white border border-[#ca3433] rounded-xl p-8">
+            <div className="text-center">
+              <span className="inline-block bg-[#0e1f3e] text-white font-bold px-4 py-2 rounded-lg text-lg mb-4">ENGLISH AND MATH</span>
+              <h4 className="text-2xl font-bold">Complete SAT Prep Course</h4>
+              <p className="text-5xl font-bold mt-4">$3,300</p>
+              <p className="mt-2 text-[#f7e0e0]">Full Practice Exam Including All Materials Needed</p>
+            </div>
+            <ul className="mt-6 space-y-3">
+              <li className="flex items-start"><CheckCircle className="mr-2 mt-0.5" size={18} />All English and Math sessions</li>
+              <li className="flex items-start"><CheckCircle className="mr-2 mt-0.5" size={18} />Complete practice materials</li>
+              <li className="flex items-start"><CheckCircle className="mr-2 mt-0.5" size={18} />Full practice exams</li>
+              <li className="flex items-start"><CheckCircle className="mr-2 mt-0.5" size={18} />Priority support</li>
             </ul>
-            <a href={prepStripeLink} target="_blank" rel="noopener noreferrer" className="mt-6 block w-full rounded-lg bg-[#0e1f3e] text-white py-3 font-semibold text-center">Enroll in ELA</a>
-          </div>
-
-
-
-          <div className="bg-[#ca3433] text-white border border-[#ca3433] rounded-xl p-6">
-            <p className="inline-block rounded-full bg-white text-[#ca3433] text-xs font-bold px-3 py-1">BEST VALUE</p>
-            <h4 className="text-2xl font-bold mt-3">Both Subjects</h4>
-            <p className="text-4xl font-bold mt-3">$3,300</p>
-            <p className="mt-2 text-[#f7e0e0]">Complete exam prep</p>
-            <ul className="mt-4 space-y-2">
-              <li className="flex items-start"><CheckCircle className="mr-2 mt-0.5" size={16} />All ELA and Math sessions</li>
-              <li className="flex items-start"><CheckCircle className="mr-2 mt-0.5" size={16} />Complete materials</li>
-              <li className="flex items-start"><CheckCircle className="mr-2 mt-0.5" size={16} />Priority support</li>
-            </ul>
-            <a href={prepStripeLink} target="_blank" rel="noopener noreferrer" className="mt-6 block w-full rounded-lg bg-white text-[#ca3433] py-3 font-semibold text-center">Enroll Both Subjects</a>
+            <a href={prepStripeLink} target="_blank" rel="noopener noreferrer" className="mt-6 block w-full rounded-lg bg-white text-[#ca3433] py-4 font-semibold text-center text-lg">Enroll Now - $3,300</a>
           </div>
         </div>
       </section>
