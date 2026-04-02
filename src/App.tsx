@@ -307,7 +307,7 @@ function SatBootcampSection() {
 }
 
 function SatPrepSection() {
-  const prepStripeLink = 'https://buy.stripe.com/4gM8wI1dO33Q0hz8czdfG05';
+  const prepStripeLink = 'https://buy.stripe.com/3cIeV69KkbAm9S92SfdfG0z';
 
   return (
     <>
