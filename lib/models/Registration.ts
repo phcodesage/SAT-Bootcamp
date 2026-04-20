@@ -9,7 +9,7 @@ export interface IRegistration extends Document {
   paymentMethod: 'zelle' | 'card' | 'pending';
   zelleReference?: string;
   status: 'pending' | 'confirmed' | 'cancelled';
-  notes?: string;
+  selectedDate?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -25,6 +25,7 @@ const RegistrationSchema = new Schema<IRegistration>(
     zelleReference: { type: String, trim: true },
     status:      { type: String, required: true, enum: ['pending', 'confirmed', 'cancelled'], default: 'pending' },
     notes:       { type: String, trim: true },
+    selectedDate: { type: String, trim: true },
   },
   { timestamps: true }
 );

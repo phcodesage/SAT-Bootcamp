@@ -7,6 +7,7 @@ export interface RegistrationData {
   email: string;
   phone: string;
   subject: 'English' | 'Math' | 'Both';
+  selectedDate?: string;
   /** MongoDB _id returned after the initial save — used to PATCH payment details */
   registrationId?: string;
 }
@@ -15,6 +16,7 @@ interface RegistrationModalProps {
   isOpen: boolean;
   onClose: () => void;
   courseName: string;
+  availableDates?: string[];
   onComplete: (data: RegistrationData) => void;
 }
 
@@ -24,6 +26,7 @@ export default function RegistrationModal({
   isOpen,
   onClose,
   courseName,
+  availableDates,
   onComplete,
 }: RegistrationModalProps) {
   const [step, setStep] = useState<Step>('form');
@@ -32,6 +35,7 @@ export default function RegistrationModal({
     email: '',
     phone: '',
     subject: 'Both',
+    selectedDate: '',
   });
   const [errors, setErrors] = useState<Partial<Record<keyof RegistrationData, string>>>({});
 
@@ -46,6 +50,9 @@ export default function RegistrationModal({
       e.email = 'Please enter a valid email';
     }
     if (!form.phone.trim()) e.phone = 'Phone number is required';
+    if (availableDates && availableDates.length > 0 && !form.selectedDate) {
+      e.selectedDate = 'Please select a date';
+    }
     return e;
   }
 
@@ -70,6 +77,7 @@ export default function RegistrationModal({
           phone: form.phone,
           subject: form.subject,
           courseName,
+          selectedDate: form.selectedDate,
           paymentMethod: 'pending',
           status: 'pending',
         }),
@@ -89,7 +97,7 @@ export default function RegistrationModal({
 
   function handleClose() {
     setStep('form');
-    setForm({ studentName: '', email: '', phone: '', subject: 'Both' });
+    setForm({ studentName: '', email: '', phone: '', subject: 'Both', selectedDate: '' });
     setErrors({});
     onClose();
   }
@@ -185,6 +193,33 @@ export default function RegistrationModal({
                     ))}
                   </div>
                 </div>
+
+                {availableDates && availableDates.length > 0 && (
+                  <div style={{ marginBottom: 24 }}>
+                    <label style={{ display: 'block', fontSize: 11, fontWeight: 700, color: '#0e1f3e', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>
+                      {courseName.toLowerCase().includes('prep') ? 'Select Schedule *' : 'Select Date *'}
+                    </label>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: 10 }}>
+                      {availableDates.map((date) => (
+                        <button
+                          key={date} type="button"
+                          onClick={() => { setForm(f => ({ ...f, selectedDate: date })); setErrors(er => ({ ...er, selectedDate: undefined })); }}
+                          style={{
+                            padding: '12px 8px', borderRadius: 12,
+                            border: `2px solid ${form.selectedDate === date ? '#ca3433' : '#e2e8f0'}`,
+                            background: form.selectedDate === date ? '#ca3433' : '#f8fafc',
+                            color: form.selectedDate === date ? '#fff' : '#0e1f3e',
+                            fontWeight: 700, fontSize: 13, cursor: 'pointer', transition: 'all 0.15s',
+                            textAlign: 'center',
+                          }}
+                        >
+                          {date}
+                        </button>
+                      ))}
+                    </div>
+                    {errors.selectedDate && <p style={{ color: '#ca3433', fontSize: 12, marginTop: 4 }}>{errors.selectedDate}</p>}
+                  </div>
+                )}
 
                 <button
                   type="submit"

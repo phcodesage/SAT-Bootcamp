@@ -7,7 +7,7 @@ import { getAdminSession } from '@/lib/auth';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { studentName, email, phone, subject, courseName, paymentMethod, zelleReference } = body;
+    const { studentName, email, phone, subject, courseName, paymentMethod, zelleReference, selectedDate } = body;
 
     if (!studentName || !email || !phone || !subject || !courseName) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -23,6 +23,7 @@ export async function POST(req: NextRequest) {
       courseName,
       paymentMethod: paymentMethod ?? 'pending',
       zelleReference,
+      selectedDate,
       status: 'pending',
     });
 

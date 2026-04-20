@@ -21,6 +21,7 @@ interface Registration {
   zelleReference?: string;
   status: string;
   notes?: string;
+  selectedDate?: string;
   createdAt: string;
 }
 
@@ -324,6 +325,11 @@ function RegistrationsTab({
                       <td className="px-6 py-4">
                         <div className="font-bold text-slate-900">{reg.studentName}</div>
                         <div className="text-xs text-slate-500">{reg.email}</div>
+                        {reg.selectedDate && (
+                          <div className="text-[10px] text-slate-400 font-medium mt-0.5 italic">
+                            Date: {reg.selectedDate}
+                          </div>
+                        )}
                       </td>
                       <td className="px-6 py-4">
                         <div className="text-sm font-semibold text-[#0e1f3e]">{reg.courseName}</div>
@@ -360,6 +366,7 @@ function RegistrationsTab({
                     </div>
                     <StatusBadge status={reg.status} />
                   </div>
+                  {reg.selectedDate && <div className="text-xs text-[#ca3433] font-bold mb-1 italic">Date: {reg.selectedDate}</div>}
                   <div className="flex justify-between items-center text-xs text-slate-400">
                     <span>{new Date(reg.createdAt).toLocaleDateString()}</span>
                     <span className="flex items-center text-[#ca3433] font-bold">Details <ChevronRight size={14} /></span>
@@ -535,6 +542,7 @@ function RegistrationDetails({ reg, onClose, updateStatus, deleteReg }: { reg: a
             <DetailItem label="Selected Course" value={reg.courseName || 'SAT Bootcamp'} />
             <DetailItem label="Subject" value={reg.subject} />
             <DetailItem label="Payment Method" value={reg.paymentMethod.toUpperCase()} />
+            {reg.selectedDate && <DetailItem label="Program Date" value={reg.selectedDate} />}
             {reg.zelleReference && <DetailItem label="Zelle Ref #" value={reg.zelleReference} />}
             <div className="sm:col-span-2">
               <DetailItem label="Registration Date" value={new Date(reg.createdAt).toLocaleString()} />

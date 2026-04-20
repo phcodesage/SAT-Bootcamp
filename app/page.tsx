@@ -20,7 +20,7 @@ export default function HomePage() {
   const [selectedProgram, setSelectedProgram] = useState<Program>('bootcamp');
 
   const [regOpen, setRegOpen] = useState(false);
-  const [pendingCourse, setPendingCourse] = useState({ name: '', cashPrice: '', stripeLink: '' });
+  const [pendingCourse, setPendingCourse] = useState({ name: '', cashPrice: '', stripeLink: '', availableDates: [] as string[] });
   const [registration, setRegistration] = useState<RegistrationData | undefined>(undefined);
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -28,8 +28,8 @@ export default function HomePage() {
   const [modalCashPrice, setModalCashPrice] = useState('');
   const [modalStripeLink, setModalStripeLink] = useState('');
 
-  function openPayment(courseName: string, cashPrice: string, stripeLink: string) {
-    setPendingCourse({ name: courseName, cashPrice, stripeLink });
+  function openPayment(courseName: string, cashPrice: string, stripeLink: string, availableDates: string[] = []) {
+    setPendingCourse({ name: courseName, cashPrice, stripeLink, availableDates });
     setRegOpen(true);
   }
 
@@ -59,6 +59,7 @@ export default function HomePage() {
         isOpen={regOpen}
         onClose={() => setRegOpen(false)}
         courseName={pendingCourse.name}
+        availableDates={pendingCourse.availableDates}
         onComplete={handleRegistrationComplete}
       />
       <PaymentModal
@@ -137,7 +138,7 @@ export default function HomePage() {
   );
 }
 
-type OnOpenPayment = (courseName: string, cashPrice: string, stripeLink: string) => void;
+type OnOpenPayment = (courseName: string, cashPrice: string, stripeLink: string, availableDates?: string[]) => void;
 
 const bootcamps = [
   { title: 'APRIL BOOTCAMP',     examLabel: 'For May 2 Exam',    sessions: ['April 19, 2026', 'April 26, 2026'] },
@@ -237,13 +238,13 @@ function SatBootcampSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment })
             title="English Only"
             price="$199"
             features={['4-hour session', 'Reading and Writing strategies', 'Practice materials included']}
-            onRegister={() => onOpenPayment('SAT Bootcamp — English Only', '$199', 'https://buy.stripe.com/eVq14ge0A33Q9S978vdfG06')}
+            onRegister={() => onOpenPayment('SAT Bootcamp — English Only', '$199', 'https://buy.stripe.com/eVq14ge0A33Q9S978vdfG06', ['May 24, 2026', 'May 31, 2026'])}
           />
           <PriceCard
             title="Math Only"
             price="$199"
             features={['4-hour session', 'Math problem-solving techniques', 'Practice materials included']}
-            onRegister={() => onOpenPayment('SAT Bootcamp — Math Only', '$199', 'https://buy.stripe.com/eVq14ge0A33Q9S978vdfG06')}
+            onRegister={() => onOpenPayment('SAT Bootcamp — Math Only', '$199', 'https://buy.stripe.com/eVq14ge0A33Q9S978vdfG06', ['May 24, 2026', 'May 31, 2026'])}
           />
           <PriceCard
             title="Complete Bootcamp"
@@ -251,7 +252,7 @@ function SatBootcampSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment })
             highlight
             badge="BEST VALUE"
             features={['Full 8-hour program', 'English and Math coverage', 'Complete test preparation', 'Save $48']}
-            onRegister={() => onOpenPayment('SAT Bootcamp — Complete (Both Sessions)', '$350', 'https://buy.stripe.com/4gM8wI1dO33Q0hz8czdfG05')}
+            onRegister={() => onOpenPayment('SAT Bootcamp — Complete (Both Sessions)', '$350', 'https://buy.stripe.com/4gM8wI1dO33Q0hz8czdfG05', ['May 24 & 31, 2026'])}
           />
         </div>
       </div>
@@ -309,9 +310,9 @@ function PriceCard({
 }
 
 const prepScheduleOptions = [
-  { label: 'Option 1', days: 'Monday, Wednesday & Friday', time: '4:00 PM – 6:00 PM' },
-  { label: 'Option 2', days: 'Tuesday & Thursday',         time: '3:00 PM – 6:00 PM' },
-  { label: 'Option 3', days: 'Sunday',                     time: '9:00 AM – 3:00 PM' },
+  { label: 'Option 1', days: 'June 29 - Aug 21 (M/W/F)', time: '4:00 PM – 6:00 PM' },
+  { label: 'Option 2', days: 'June 30 - Aug 20 (Tue & Thu)', time: '3:00 PM – 6:00 PM' },
+  { label: 'Option 3', days: 'July 5 - Aug 16 (Sundays)', time: '9:00 AM – 3:00 PM' },
 ];
 
 function SatPrepSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
@@ -338,7 +339,7 @@ function SatPrepSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
           <div className="flex flex-wrap gap-3">
             <a href="#schedule" className="bg-[#0e1f3e] text-white px-5 py-3 rounded-lg font-semibold hover:bg-[#1b2f57] transition-colors">Schedule</a>
             <a href="#pricing"  className="bg-[#ca3433] text-white px-5 py-3 rounded-lg font-semibold hover:bg-[#ac2c2a] transition-colors">Pricing</a>
-            <button onClick={() => onOpenPayment('SAT Prep Course', prepPrice, prepStripeLink)} className="bg-slate-100 text-slate-900 px-5 py-3 rounded-lg font-semibold hover:bg-slate-200 transition-colors">Enroll Now</button>
+            <button onClick={() => onOpenPayment('SAT Prep Course', prepPrice, prepStripeLink, prepScheduleOptions.map(o => o.days))} className="bg-slate-100 text-slate-900 px-5 py-3 rounded-lg font-semibold hover:bg-slate-200 transition-colors">Enroll Now</button>
           </div>
         </div>
 
@@ -408,7 +409,7 @@ function SatPrepSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
                 <li key={f} className="flex items-start"><CheckCircle className="mr-2 mt-0.5" size={18} />{f}</li>
               ))}
             </ul>
-            <button onClick={() => onOpenPayment('SAT Prep Course', prepPrice, prepStripeLink)} className="mt-6 block w-full rounded-lg bg-white text-[#ca3433] py-4 font-semibold text-center text-lg">
+            <button onClick={() => onOpenPayment('SAT Prep Course', prepPrice, prepStripeLink, prepScheduleOptions.map(o => o.days))} className="mt-6 block w-full rounded-lg bg-white text-[#ca3433] py-4 font-semibold text-center text-lg">
               Enroll Now — Choose Payment
             </button>
           </div>
@@ -420,7 +421,7 @@ function SatPrepSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
         <p className="text-[#f7e0e0] text-lg mb-6">
           Don&apos;t wait until the last minute. Enroll now and give your student the best chance to excel.
         </p>
-        <button onClick={() => onOpenPayment('SAT Prep Course', prepPrice, prepStripeLink)} className="inline-block bg-[#ca3433] hover:bg-[#ac2c2a] transition-colors px-8 py-4 rounded-xl text-white font-semibold text-lg">
+        <button onClick={() => onOpenPayment('SAT Prep Course', prepPrice, prepStripeLink, prepScheduleOptions.map(o => o.days))} className="inline-block bg-[#ca3433] hover:bg-[#ac2c2a] transition-colors px-8 py-4 rounded-xl text-white font-semibold text-lg">
           Enroll Now — Choose Payment
         </button>
       </section>
