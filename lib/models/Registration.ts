@@ -10,6 +10,7 @@ export interface IRegistration extends Document {
   zelleReference?: string;
   status: 'pending' | 'confirmed' | 'cancelled';
   selectedDate?: string;
+  notes?: string;
   createdAt: Date;
   updatedAt: Date;
 }
