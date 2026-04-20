@@ -27,11 +27,11 @@ export default function ScrollToTop() {
         }
         .stt-btn {
           position: fixed;
-          bottom: 28px;
-          right: 28px;
+          bottom: 24px;
+          right: 24px;
           z-index: 999;
-          width: 48px;
-          height: 48px;
+          width: 38px;
+          height: 38px;
           border-radius: 50%;
           border: none;
           background: #ca3433;
@@ -40,13 +40,13 @@ export default function ScrollToTop() {
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 4px 20px rgba(202,52,51,0.45);
+          box-shadow: 0 4px 15px rgba(202,52,51,0.35);
           transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
         }
         .stt-btn:hover {
           background: #ac2c2a;
-          transform: translateY(-3px);
-          box-shadow: 0 8px 24px rgba(202,52,51,0.5);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(202,52,51,0.4);
         }
         .stt-btn:active {
           transform: translateY(0);
@@ -59,13 +59,13 @@ export default function ScrollToTop() {
           pointer-events: none;
         }
       `}</style>
-
+ 
       <button
         className={`stt-btn ${visible ? 'stt-visible' : 'stt-hidden'}`}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         aria-label="Scroll to top"
       >
-        <ArrowUp size={22} strokeWidth={2.5} />
+        <ArrowUp size={18} strokeWidth={2.5} />
       </button>
     </>
   );
