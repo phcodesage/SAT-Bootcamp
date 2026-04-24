@@ -150,6 +150,27 @@ const bootcamps = [
 ];
 
 function SatBootcampSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
+  const allBootcampIndividualDates = bootcamps.flatMap(bc => bc.sessions);
+  const allBootcampCombinedDates = bootcamps.map(bc => {
+    if (bc.sessions.length === 2) {
+      const s1 = bc.sessions[0];
+      const s2 = bc.sessions[1];
+      const parts1 = s1.split(' ');
+      const parts2 = s2.split(' ');
+      const month1 = parts1[0];
+      const day1 = parts1[1].replace(',', '');
+      const month2 = parts2[0];
+      const day2 = parts2[1].replace(',', '');
+      const year = parts2[2];
+
+      if (month1 === month2) {
+        return `${month1} ${day1} & ${day2}, ${year}`;
+      }
+      return `${month1} ${day1} & ${month2} ${day2}, ${year}`;
+    }
+    return bc.sessions.join(' & ');
+  });
+
   return (
     <>
       <div className="relative w-full min-h-[420px] rounded-2xl bg-[#0e1f3e] overflow-hidden mb-12">
@@ -238,13 +259,13 @@ function SatBootcampSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment })
             title="English Only"
             price="$199"
             features={['4-hour session', 'Reading and Writing strategies', 'Practice materials included']}
-            onRegister={() => onOpenPayment('SAT Bootcamp — English Only', '$199', 'https://buy.stripe.com/eVq14ge0A33Q9S978vdfG06', ['May 24, 2026', 'May 31, 2026'])}
+            onRegister={() => onOpenPayment('SAT Bootcamp — English Only', '$199', 'https://buy.stripe.com/eVq14ge0A33Q9S978vdfG06', allBootcampIndividualDates)}
           />
           <PriceCard
             title="Math Only"
             price="$199"
             features={['4-hour session', 'Math problem-solving techniques', 'Practice materials included']}
-            onRegister={() => onOpenPayment('SAT Bootcamp — Math Only', '$199', 'https://buy.stripe.com/eVq14ge0A33Q9S978vdfG06', ['May 24, 2026', 'May 31, 2026'])}
+            onRegister={() => onOpenPayment('SAT Bootcamp — Math Only', '$199', 'https://buy.stripe.com/eVq14ge0A33Q9S978vdfG06', allBootcampIndividualDates)}
           />
           <PriceCard
             title="Complete Bootcamp"
@@ -252,7 +273,7 @@ function SatBootcampSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment })
             highlight
             badge="BEST VALUE"
             features={['Full 8-hour program', 'English and Math coverage', 'Complete test preparation', 'Save $48']}
-            onRegister={() => onOpenPayment('SAT Bootcamp — Complete (Both Sessions)', '$350', 'https://buy.stripe.com/4gM8wI1dO33Q0hz8czdfG05', ['May 24 & 31, 2026'])}
+            onRegister={() => onOpenPayment('SAT Bootcamp — Complete (Both Sessions)', '$350', 'https://buy.stripe.com/4gM8wI1dO33Q0hz8czdfG05', allBootcampCombinedDates)}
           />
         </div>
       </div>
