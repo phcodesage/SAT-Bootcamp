@@ -29,12 +29,20 @@ export default function RegistrationModal({
   availableDates,
   onComplete,
 }: RegistrationModalProps) {
+  // Derive subject from course name when it's already determined
+  const presetSubject: RegistrationData['subject'] | null =
+    courseName.toLowerCase().includes('english only')
+      ? 'English'
+      : courseName.toLowerCase().includes('math only')
+      ? 'Math'
+      : null;
+
   const [step, setStep] = useState<Step>('form');
   const [form, setForm] = useState<RegistrationData>({
     studentName: '',
     email: '',
     phone: '',
-    subject: 'Both',
+    subject: presetSubject ?? 'Both',
     selectedDate: '',
   });
   const [errors, setErrors] = useState<Partial<Record<keyof RegistrationData, string>>>({});
@@ -97,7 +105,7 @@ export default function RegistrationModal({
 
   function handleClose() {
     setStep('form');
-    setForm({ studentName: '', email: '', phone: '', subject: 'Both', selectedDate: '' });
+    setForm({ studentName: '', email: '', phone: '', subject: presetSubject ?? 'Both', selectedDate: '' });
     setErrors({});
     onClose();
   }
@@ -179,20 +187,20 @@ export default function RegistrationModal({
                   />
                 </Field>
 
+                {!presetSubject && (
                 <div style={{ marginBottom: 24 }}>
-                  <label style={{ display: 'block', fontSize: 11, fontWeight: 700, color: '#0e1f3e', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>Subject *</label>
+                  <label style={{ display: 'block', fontSize: 11, fontWeight: 700, color: '#0e1f3e', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>Subject</label>
                   <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-                    {(['English', 'Math', 'Both'] as const).map((opt) => (
-                      <button
-                        key={opt} type="button"
-                        onClick={() => setForm(f => ({ ...f, subject: opt }))}
-                        style={{ flex: 1, minWidth: 90, padding: '12px 8px', borderRadius: 12, border: `2px solid ${form.subject === opt ? '#ca3433' : '#e2e8f0'}`, background: form.subject === opt ? '#ca3433' : '#f8fafc', color: form.subject === opt ? '#fff' : '#0e1f3e', fontWeight: 700, fontSize: 14, cursor: 'pointer', transition: 'all 0.15s' }}
-                      >
-                        {opt === 'Both' ? 'Both (English & Math)' : opt}
-                      </button>
-                    ))}
+                    <button
+                      type="button"
+                      style={{ flex: 1, minWidth: 90, padding: '12px 8px', borderRadius: 12, border: `2px solid #ca3433`, background: '#ca3433', color: '#fff', fontWeight: 700, fontSize: 14, cursor: 'default' }}
+                      disabled
+                    >
+                      Both (English &amp; Math)
+                    </button>
                   </div>
                 </div>
+                )}
 
                 {availableDates && availableDates.length > 0 && (
                   <div style={{ marginBottom: 24 }}>

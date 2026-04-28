@@ -149,7 +149,8 @@ const bootcamps = [
 ];
 
 function SatBootcampSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
-  const allBootcampIndividualDates = bootcamps.flatMap(bc => bc.sessions.map(s => s.date));
+  const allBootcampMathDates = bootcamps.map(bc => bc.sessions.find(s => s.subject === 'MATH')!.date);
+  const allBootcampEnglishDates = bootcamps.map(bc => bc.sessions.find(s => s.subject === 'ENGLISH')!.date);
   const allBootcampCombinedDates = bootcamps.map(bc => {
     if (bc.sessions.length === 2) {
       const s1 = bc.sessions[0].date;
@@ -261,13 +262,13 @@ function SatBootcampSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment })
             title="English Only"
             price="$199"
             features={['4-hour session', 'Reading and Writing strategies', 'Practice materials included']}
-            onRegister={() => onOpenPayment('SAT Bootcamp — English Only', '$199', 'https://buy.stripe.com/eVq14ge0A33Q9S978vdfG06', allBootcampIndividualDates)}
+            onRegister={() => onOpenPayment('SAT Bootcamp — English Only', '$199', 'https://buy.stripe.com/eVq14ge0A33Q9S978vdfG06', allBootcampEnglishDates)}
           />
           <PriceCard
             title="Math Only"
             price="$199"
             features={['4-hour session', 'Math problem-solving techniques', 'Practice materials included']}
-            onRegister={() => onOpenPayment('SAT Bootcamp — Math Only', '$199', 'https://buy.stripe.com/eVq14ge0A33Q9S978vdfG06', allBootcampIndividualDates)}
+            onRegister={() => onOpenPayment('SAT Bootcamp — Math Only', '$199', 'https://buy.stripe.com/eVq14ge0A33Q9S978vdfG06', allBootcampMathDates)}
           />
           <PriceCard
             title="Complete Bootcamp"
