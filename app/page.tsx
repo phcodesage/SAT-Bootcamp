@@ -141,20 +141,19 @@ export default function HomePage() {
 type OnOpenPayment = (courseName: string, cashPrice: string, stripeLink: string, availableDates?: string[]) => void;
 
 const bootcamps = [
-  { title: 'APRIL BOOTCAMP',     examLabel: 'For May 2 Exam',    sessions: ['April 19, 2026', 'April 26, 2026'] },
-  { title: 'MAY BOOTCAMP',       examLabel: 'For June 6 Exam',   sessions: ['May 24, 2026', 'May 31, 2026'] },
-  { title: 'AUGUST BOOTCAMP',    examLabel: 'For Sep 12 Exam',   sessions: ['Aug 30, 2026', 'Sep 6, 2026'] },
-  { title: 'SEPTEMBER BOOTCAMP', examLabel: 'For Oct 2 Exam',    sessions: ['Sep 20, 2026', 'Sep 27, 2026'] },
-  { title: 'OCTOBER BOOTCAMP',   examLabel: 'For Nov 7 Exam',    sessions: ['Oct 25, 2026', 'Nov 1, 2026'] },
-  { title: 'NOVEMBER BOOTCAMP',  examLabel: 'For Dec 5 Exam',    sessions: ['Nov 22, 2026', 'Nov 29, 2026'] },
+  { title: 'MAY BOOTCAMP',       examLabel: 'For June 6 Exam',   sessions: [{ date: 'May 24, 2026', subject: 'MATH' }, { date: 'May 31, 2026', subject: 'ENGLISH' }] },
+  { title: 'AUGUST BOOTCAMP',    examLabel: 'For Sep 12 Exam',   sessions: [{ date: 'Aug 30, 2026', subject: 'MATH' }, { date: 'Sep 6, 2026', subject: 'ENGLISH' }] },
+  { title: 'SEPTEMBER BOOTCAMP', examLabel: 'For Oct 2 Exam',    sessions: [{ date: 'Sep 20, 2026', subject: 'MATH' }, { date: 'Sep 27, 2026', subject: 'ENGLISH' }] },
+  { title: 'OCTOBER BOOTCAMP',   examLabel: 'For Nov 7 Exam',    sessions: [{ date: 'Oct 25, 2026', subject: 'MATH' }, { date: 'Nov 1, 2026', subject: 'ENGLISH' }] },
+  { title: 'NOVEMBER BOOTCAMP',  examLabel: 'For Dec 5 Exam',    sessions: [{ date: 'Nov 22, 2026', subject: 'MATH' }, { date: 'Nov 29, 2026', subject: 'ENGLISH' }] },
 ];
 
 function SatBootcampSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
-  const allBootcampIndividualDates = bootcamps.flatMap(bc => bc.sessions);
+  const allBootcampIndividualDates = bootcamps.flatMap(bc => bc.sessions.map(s => s.date));
   const allBootcampCombinedDates = bootcamps.map(bc => {
     if (bc.sessions.length === 2) {
-      const s1 = bc.sessions[0];
-      const s2 = bc.sessions[1];
+      const s1 = bc.sessions[0].date;
+      const s2 = bc.sessions[1].date;
       const parts1 = s1.split(' ');
       const parts2 = s2.split(' ');
       const month1 = parts1[0];
@@ -168,7 +167,7 @@ function SatBootcampSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment })
       }
       return `${month1} ${day1} & ${month2} ${day2}, ${year}`;
     }
-    return bc.sessions.join(' & ');
+    return bc.sessions.map(s => s.date).join(' & ');
   });
 
   return (
@@ -220,9 +219,12 @@ function SatBootcampSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment })
             <ul className="space-y-2 text-gray-700">
               <li className="text-sm font-bold text-[#0e1f3e] uppercase tracking-wide">Bootcamp Sessions:</li>
               {bc.sessions.map((s) => (
-                <li key={s} className="flex items-center">
-                  <CheckCircle className="text-[#ca3433] mr-2 flex-shrink-0" size={16} />
-                  <span>{s}</span>
+                <li key={s.date} className="flex items-center gap-2">
+                  <CheckCircle className="text-[#ca3433] flex-shrink-0" size={16} />
+                  <span>{s.date}</span>
+                  <span className="text-xs font-bold text-[#ca3433] border border-[#ca3433] rounded px-1.5 py-0.5 leading-none">
+                    {s.subject}
+                  </span>
                 </li>
               ))}
             </ul>
