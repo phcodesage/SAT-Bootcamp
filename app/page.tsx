@@ -262,13 +262,13 @@ function SatBootcampSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment })
             title="English Only"
             price="$199"
             features={['4-hour session', 'Reading and Writing strategies', 'Practice materials included']}
-            onRegister={() => onOpenPayment('SAT Bootcamp — English Only', '$199', 'https://buy.stripe.com/eVq14ge0A33Q9S978vdfG06', allBootcampEnglishDates)}
+            onRegister={() => onOpenPayment('SAT Bootcamp — English Only', '$199', 'https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=d1a47a98-5304-11f1-a8e1-12a0879a85b1', allBootcampEnglishDates)}
           />
           <PriceCard
             title="Math Only"
             price="$199"
             features={['4-hour session', 'Math problem-solving techniques', 'Practice materials included']}
-            onRegister={() => onOpenPayment('SAT Bootcamp — Math Only', '$199', 'https://buy.stripe.com/eVq14ge0A33Q9S978vdfG06', allBootcampMathDates)}
+            onRegister={() => onOpenPayment('SAT Bootcamp — Math Only', '$199', 'https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=d1a47a98-5304-11f1-a8e1-12a0879a85b1', allBootcampMathDates)}
           />
           <PriceCard
             title="Complete Bootcamp"
@@ -276,7 +276,7 @@ function SatBootcampSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment })
             highlight
             badge="BEST VALUE"
             features={['Full 8-hour program', 'English and Math coverage', 'Complete test preparation', 'Save $48']}
-            onRegister={() => onOpenPayment('SAT Bootcamp — Complete (Both Sessions)', '$350', 'https://buy.stripe.com/4gM8wI1dO33Q0hz8czdfG05', allBootcampCombinedDates)}
+            onRegister={() => onOpenPayment('SAT Bootcamp — Complete (Both Sessions)', '$350', 'https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=d1a47a98-5304-11f1-a8e1-12a0879a85b1', allBootcampCombinedDates)}
           />
         </div>
       </div>
@@ -340,7 +340,7 @@ const prepScheduleOptions = [
 ];
 
 function SatPrepSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
-  const prepStripeLink = 'https://buy.stripe.com/3cIeV69KkbAm9S92SfdfG0z';
+  const prepStripeLink = 'https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=f73ff19a-5304-11f1-a8e1-12a0879a85b1';
   const prepPrice = '$3,300';
 
   return (
