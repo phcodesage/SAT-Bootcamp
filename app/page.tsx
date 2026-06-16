@@ -333,10 +333,9 @@ function PriceCard({
   );
 }
 
-const prepScheduleOptions = [
-  { label: 'Option 1', days: 'June 29 - Aug 21 (M/W/F)', time: '4:00 PM – 6:00 PM' },
-  { label: 'Option 2', days: 'June 30 - Aug 20 (Tue & Thu)', time: '3:00 PM – 6:00 PM' },
-  { label: 'Option 3', days: 'July 5 - Aug 16 (Sundays)', time: '9:00 AM – 3:00 PM' },
+const prepScheduleDays = [
+  { label: 'Monday & Wednesday', days: 'June 29 - Aug 20 (Mon & Wed)', time: '3:00 PM – 6:00 PM' },
+  { label: 'Sunday', days: 'July 5 - Aug 16 (Sundays)', time: '9:00 AM – 3:00 PM' },
 ];
 
 function SatPrepSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
@@ -363,7 +362,7 @@ function SatPrepSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
           <div className="flex flex-wrap gap-3">
             <a href="#schedule" className="bg-[#0e1f3e] text-white px-5 py-3 rounded-lg font-semibold hover:bg-[#1b2f57] transition-colors">Schedule</a>
             <a href="#pricing"  className="bg-[#ca3433] text-white px-5 py-3 rounded-lg font-semibold hover:bg-[#ac2c2a] transition-colors">Pricing</a>
-            <button onClick={() => onOpenPayment('SAT Prep Course', prepPrice, prepStripeLink, prepScheduleOptions.map(o => o.days))} className="bg-slate-100 text-slate-900 px-5 py-3 rounded-lg font-semibold hover:bg-slate-200 transition-colors">Enroll Now</button>
+            <button onClick={() => onOpenPayment('SAT Prep Course', prepPrice, prepStripeLink, prepScheduleDays.map(o => o.days))} className="bg-slate-100 text-slate-900 px-5 py-3 rounded-lg font-semibold hover:bg-slate-200 transition-colors">Enroll Now</button>
           </div>
         </div>
 
@@ -375,11 +374,11 @@ function SatPrepSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
             </div>
             <div className="flex items-center gap-2 text-[#f7e0e0]">
               <Clock size={18} className="text-[#ca3433]" />
-              <span className="font-semibold">8 Weeks · Ends week of Aug 21</span>
+              <span className="font-semibold">2 Days Per Week · Ends week of Aug 20</span>
             </div>
           </div>
-          <div className="grid md:grid-cols-3 gap-4">
-            {prepScheduleOptions.map((opt) => (
+          <div className="grid md:grid-cols-2 gap-4">
+            {prepScheduleDays.map((opt) => (
               <div key={opt.label} className="rounded-xl bg-[#f7e0e0] border border-[#efc8c8] p-5">
                 <p className="text-xs font-bold uppercase tracking-widest text-[#ca3433] mb-2">{opt.label}</p>
                 <p className="font-bold text-[#0e1f3e] text-lg leading-snug">{opt.days}</p>
@@ -404,7 +403,7 @@ function SatPrepSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
             { icon: <Star className="text-[#ca3433]" />, title: 'Boost Confidence', desc: 'Build test-taking skills and confidence through structured practice and expert guidance' },
             { icon: <GraduationCap className="text-[#ca3433]" />, title: 'Expert Instructors', desc: 'Learn from experienced educators who understand SAT requirements inside and out' },
             { icon: <BookOpen className="text-[#ca3433]" />, title: 'Structured Reviews', desc: 'Comprehensive curriculum covering all essential topics and test-taking strategies' },
-            { icon: <Calendar className="text-[#ca3433]" />, title: 'Flexible Schedule', desc: 'Three schedule options to fit your summer — mornings, afternoons, or weekdays' },
+            { icon: <Calendar className="text-[#ca3433]" />, title: 'Convenient Schedule', desc: 'Two days per week — Monday & Wednesday afternoons plus Sunday sessions' },
           ].map((item) => (
             <div key={item.title} className="bg-white border border-slate-200 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-3">
@@ -433,7 +432,7 @@ function SatPrepSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
                 <li key={f} className="flex items-start"><CheckCircle className="mr-2 mt-0.5" size={18} />{f}</li>
               ))}
             </ul>
-            <button onClick={() => onOpenPayment('SAT Prep Course', prepPrice, prepStripeLink, prepScheduleOptions.map(o => o.days))} className="mt-6 block w-full rounded-lg bg-white text-[#ca3433] py-4 font-semibold text-center text-lg">
+            <button onClick={() => onOpenPayment('SAT Prep Course', prepPrice, prepStripeLink, prepScheduleDays.map(o => o.days))} className="mt-6 block w-full rounded-lg bg-white text-[#ca3433] py-4 font-semibold text-center text-lg">
               Enroll Now — Choose Payment
             </button>
           </div>
@@ -445,7 +444,7 @@ function SatPrepSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
         <p className="text-[#f7e0e0] text-lg mb-6">
           Don&apos;t wait until the last minute. Enroll now and give your student the best chance to excel.
         </p>
-        <button onClick={() => onOpenPayment('SAT Prep Course', prepPrice, prepStripeLink, prepScheduleOptions.map(o => o.days))} className="inline-block bg-[#ca3433] hover:bg-[#ac2c2a] transition-colors px-8 py-4 rounded-xl text-white font-semibold text-lg">
+        <button onClick={() => onOpenPayment('SAT Prep Course', prepPrice, prepStripeLink, prepScheduleDays.map(o => o.days))} className="inline-block bg-[#ca3433] hover:bg-[#ac2c2a] transition-colors px-8 py-4 rounded-xl text-white font-semibold text-lg">
           Enroll Now — Choose Payment
         </button>
       </section>
