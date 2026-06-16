@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import {
   Calendar,
   CheckCircle,
+  ChevronDown,
   Clock,
   BookOpen,
   DollarSign,
@@ -338,6 +339,224 @@ const prepScheduleDays = [
   { label: 'Sunday', days: 'July 5 - Aug 16 (Sundays)', time: '9:00 AM – 3:00 PM' },
 ];
 
+const mathDomains = [
+  { domain: 'Algebra', units: ['Linear equations (1 var)', 'Linear equations (2 var)', 'Linear functions', 'Systems of linear equations', 'Linear inequalities'] },
+  { domain: 'Advanced Math', units: ['Equivalent expressions', 'Nonlinear equations & systems', 'Nonlinear functions'] },
+  { domain: 'Problem-Solving & Data Analysis', units: ['Ratios/rates/proportions/units', 'Percentages', 'One-variable data', 'Two-variable data & scatterplots', 'Probability & conditional probability', 'Inference & margin of error', 'Observational studies & experiments'] },
+  { domain: 'Geometry & Trigonometry', units: ['Area and volume', 'Lines/angles/triangles', 'Right triangles & trigonometry', 'Circles'] },
+];
+
+const englishDomains = [
+  { domain: 'Information & Ideas', units: ['Central ideas & details', 'Command of evidence (Textual)', 'Command of evidence (Quantitative)', 'Inferences'] },
+  { domain: 'Craft & Structure', units: ['Words in context', 'Text structure & purpose', 'Cross-text connections'] },
+  { domain: 'Expression of Ideas', units: ['Rhetorical synthesis', 'Transitions'] },
+  { domain: 'Standard English Conventions', units: ['Boundaries', 'Form/structure/sense'] },
+];
+
+const weeklyPlan = [
+  {
+    week: 1, title: 'Foundations', mathFocus: 'Algebra (Part 1)', englishFocus: 'Information & Ideas (Part 1)',
+    blocks: [
+      { label: 'MATH Instruction', time: '2 hrs', content: 'Unit: Linear Equations in One Variable — Solving for x, isolating variables, word problems. Unit: Linear Equations in Two Variables — Slope, intercepts, slope-intercept form, standard form, graphing.' },
+      { label: 'MATH Practice', time: '1 hr', content: 'Khan Academy: Algebra → Linear equations in 1 & 2 variables — skill drills + 1 timed mini quiz (10 Qs).' },
+      { label: 'ENGLISH Instruction', time: '2 hrs', content: 'Unit: Central Ideas & Details — Identifying main idea, supporting details, summarizing passages. Unit: Command of Evidence (Textual) — Finding evidence that supports a claim.' },
+      { label: 'ENGLISH Practice', time: '1 hr', content: 'Khan Academy: Information & Ideas → Central ideas + Textual evidence — 2 reading passages with targeted question sets.' },
+    ],
+  },
+  {
+    week: 2, title: 'Building on Algebra + Deepening Comprehension', mathFocus: 'Algebra (Part 2)', englishFocus: 'Information & Ideas (Part 2)',
+    blocks: [
+      { label: 'MATH Instruction', time: '2 hrs', content: 'Unit: Linear Functions — Function notation, tables, input/output, interpreting graphs. Unit: Linear Inequalities — Solving, graphing on number lines and coordinate planes, shading regions.' },
+      { label: 'MATH Practice', time: '1 hr', content: 'Khan Academy: Algebra → Linear functions + Linear inequalities — skill exercises + word problem set.' },
+      { label: 'ENGLISH Instruction', time: '2 hrs', content: 'Unit: Command of Evidence (Quantitative) — Reading graphs, charts, tables embedded in passages. Unit: Inferences — Drawing logical conclusions; "best supported" question type.' },
+      { label: 'ENGLISH Practice', time: '1 hr', content: 'Khan Academy: Information & Ideas → Quantitative evidence + Inferences — 2 passages (one with embedded data graphic).' },
+    ],
+  },
+  {
+    week: 3, title: 'Systems & Advanced Math Entry', mathFocus: 'Algebra (Part 3) + Advanced Math Intro', englishFocus: 'Craft & Structure (Part 1)',
+    blocks: [
+      { label: 'MATH Instruction', time: '2 hrs', content: 'Unit: Systems of Two Linear Equations — Substitution, elimination, no solution/infinite solutions, word problems. Unit: Equivalent Expressions — Factoring, distributing, combining like terms.' },
+      { label: 'MATH Practice', time: '1 hr', content: 'Khan Academy: Algebra → Systems of equations + Advanced Math → Equivalent expressions — mixed drill set.' },
+      { label: 'ENGLISH Instruction', time: '2 hrs', content: 'Unit: Words in Context — Using context clues to determine meaning; vocabulary-in-context strategy. Unit: Text Structure & Purpose — Author\'s purpose, organizational patterns.' },
+      { label: 'ENGLISH Practice', time: '1 hr', content: 'Khan Academy: Craft & Structure → Words in context + Text structure — vocabulary-focused passages + purpose questions.' },
+    ],
+  },
+  {
+    week: 4, title: 'Advanced Math Core', mathFocus: 'Advanced Math (Part 2)', englishFocus: 'Craft & Structure (Part 2)',
+    blocks: [
+      { label: 'MATH Instruction', time: '2 hrs', content: 'Unit: Nonlinear Equations & Systems — Quadratics (factoring, quadratic formula, completing the square), linear + quadratic systems. Unit: Nonlinear Functions — Exponential growth/decay, parabolas, interpreting behavior.' },
+      { label: 'MATH Practice', time: '1 hr', content: 'Khan Academy: Advanced Math → Nonlinear equations + Nonlinear functions — graphing exercises + equation-solving drills.' },
+      { label: 'ENGLISH Instruction', time: '2 hrs', content: 'Unit: Cross-Text Connections — Comparing paired passages, identifying agreement/disagreement, synthesizing across authors.' },
+      { label: 'ENGLISH Practice', time: '1 hr', content: 'Khan Academy: Craft & Structure → Cross-text connections — 2 paired passage sets with comparison questions.' },
+    ],
+  },
+  {
+    week: 5, title: 'Data, Statistics & Expression of Ideas', mathFocus: 'Problem-Solving & Data Analysis (Part 1)', englishFocus: 'Expression of Ideas',
+    blocks: [
+      { label: 'MATH Instruction', time: '2 hrs', content: 'Unit: Ratios, Rates & Proportions — Setting up proportions, unit conversions, rate problems. Unit: Percentages — Percent change, multi-step problems. Unit: One-Variable Data — Mean, median, mode, standard deviation.' },
+      { label: 'MATH Practice', time: '1 hr', content: 'Khan Academy: Problem-Solving & Data Analysis → Ratios + Percentages + One-variable data — mixed word problem drill.' },
+      { label: 'ENGLISH Instruction', time: '2 hrs', content: 'Unit: Rhetorical Synthesis — Combining notes/bullet points into cohesive sentences meeting a specific goal. Unit: Transitions — Choosing correct transition words (contrast, sequence, cause/effect).' },
+      { label: 'ENGLISH Practice', time: '1 hr', content: 'Khan Academy: Expression of Ideas → Rhetorical synthesis + Transitions — synthesis writing exercises + transition sentence sets.' },
+    ],
+  },
+  {
+    week: 6, title: 'Advanced Data & Probability', mathFocus: 'Problem-Solving & Data Analysis (Part 2)', englishFocus: 'Standard English Conventions (Part 1)',
+    blocks: [
+      { label: 'MATH Instruction', time: '2 hrs', content: 'Unit: Two-Variable Data & Scatterplots — Line of best fit, correlation, interpolation vs extrapolation. Unit: Probability & Conditional Probability — Basic probability, conditional probability tables.' },
+      { label: 'MATH Practice', time: '1 hr', content: 'Khan Academy: Problem-Solving & Data Analysis → Scatterplots + Probability — data interpretation exercises.' },
+      { label: 'ENGLISH Instruction', time: '2 hrs', content: 'Unit: Boundaries — Sentence boundaries (run-ons, fragments, comma splices), proper use of periods, semicolons, colons, and em dashes.' },
+      { label: 'ENGLISH Practice', time: '1 hr', content: 'Khan Academy: Standard English Conventions → Boundaries — sentence correction exercises.' },
+    ],
+  },
+  {
+    week: 7, title: 'Geometry & Trigonometry + Grammar Mastery', mathFocus: 'Geometry & Trigonometry', englishFocus: 'Standard English Conventions (Part 2)',
+    blocks: [
+      { label: 'MATH Instruction', time: '2 hrs', content: 'Unit: Area & Volume — Circles, triangles, composite figures; cylinder, cone, sphere. Unit: Lines, Angles & Triangles — Parallel lines, transversals, congruence. Unit: Right Triangles & Trig — Pythagorean theorem, sin/cos/tan, special triangles. Unit: Circles — Arc length, sector area, central/inscribed angles.' },
+      { label: 'MATH Practice', time: '1 hr', content: 'Khan Academy: Geometry & Trigonometry — all four units — figure-based problem set.' },
+      { label: 'ENGLISH Instruction', time: '2 hrs', content: 'Unit: Form, Structure & Sense — Subject-verb agreement, pronoun-antecedent agreement, verb tense consistency, misplaced modifiers, parallel structure, possessives.' },
+      { label: 'ENGLISH Practice', time: '1 hr', content: 'Khan Academy: Standard English Conventions → Form, structure & sense — grammar correction exercises + full grammar quiz.' },
+    ],
+  },
+  {
+    week: 8, title: 'Full Review + Simulated Test', mathFocus: 'All Domains Review', englishFocus: 'All Domains Review',
+    blocks: [
+      { label: 'MATH Instruction', time: '2 hrs', content: 'Targeted Review: Most missed question types from weeks 1–7. Focus on hardest Algebra applications, Advanced Math traps, Data Analysis multi-step, Geometry word problems.' },
+      { label: 'MATH Practice', time: '1 hr', content: 'Khan Academy: Full Math section — timed practice test (Digital SAT format, 44 questions, 70 minutes simulated).' },
+      { label: 'ENGLISH Instruction', time: '2 hrs', content: 'Targeted Review: All four English domains — focus on highest-error types. Revisit cross-text connections, synthesis, and boundaries. Test-taking strategy: process of elimination, annotation, time management.' },
+      { label: 'ENGLISH Practice', time: '1 hr', content: 'Khan Academy: Full Reading & Writing section — timed practice test (Digital SAT format, 54 questions, 64 minutes simulated).' },
+    ],
+  },
+];
+
+const packetItems = [
+  'Unit Overview — Learning objectives aligned to Khan Academy unit names',
+  'Key Concepts Summary — Notes & mini-lessons reference',
+  'Formula / Reference Sheet — Topic-specific',
+  'Guided Examples — 5–8 worked problems (Math) or annotated passages (English)',
+  'Independent Practice — 15–20 questions mirroring Khan Academy style',
+  'Khan Academy Assignment Page — Exact skill names to assign each week',
+  'Exit Ticket — 3–5 questions for quick formative check',
+];
+
+function CurriculumSection() {
+  const [expandedWeek, setExpandedWeek] = useState<number | null>(null);
+
+  return (
+    <section id="curriculum" className="mb-10">
+      <div className="flex items-center gap-3 mb-6">
+        <BookOpen className="text-[#ca3433]" size={32} />
+        <h3 className="text-3xl font-bold text-[#0e1f3e]">8-Week Course Curriculum</h3>
+      </div>
+
+      {/* Domain Overview */}
+      <div className="grid md:grid-cols-2 gap-5 mb-8">
+        <div className="bg-white border-2 border-[#0e1f3e] rounded-xl p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="bg-[#0e1f3e] text-white text-xs font-bold px-3 py-1 rounded-full">MATH</span>
+            <h4 className="font-bold text-[#0e1f3e]">Digital SAT Math Domains</h4>
+          </div>
+          <div className="space-y-3">
+            {mathDomains.map((d) => (
+              <div key={d.domain}>
+                <p className="font-semibold text-[#ca3433] text-sm">{d.domain}</p>
+                <p className="text-sm text-slate-600">{d.units.join(' · ')}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="bg-white border-2 border-[#0e1f3e] rounded-xl p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="bg-[#ca3433] text-white text-xs font-bold px-3 py-1 rounded-full">ENGLISH</span>
+            <h4 className="font-bold text-[#0e1f3e]">Digital SAT Reading & Writing Domains</h4>
+          </div>
+          <div className="space-y-3">
+            {englishDomains.map((d) => (
+              <div key={d.domain}>
+                <p className="font-semibold text-[#ca3433] text-sm">{d.domain}</p>
+                <p className="text-sm text-slate-600">{d.units.join(' · ')}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Weekly Plan Accordion */}
+      <h4 className="text-xl font-bold text-[#0e1f3e] mb-4 flex items-center gap-2">
+        <Calendar className="text-[#ca3433]" size={22} />
+        Weekly Course Plan
+      </h4>
+      <div className="space-y-3">
+        {weeklyPlan.map((week) => {
+          const isOpen = expandedWeek === week.week;
+          return (
+            <div key={week.week} className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+              <button
+                type="button"
+                onClick={() => setExpandedWeek(isOpen ? null : week.week)}
+                className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-slate-50 transition-colors"
+              >
+                <div className="flex items-center gap-3 min-w-0">
+                  <span className="bg-[#0e1f3e] text-white text-xs font-bold w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">
+                    {week.week}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-bold text-[#0e1f3e] truncate">Week {week.week} — {week.title}</p>
+                    <div className="flex flex-wrap gap-2 mt-1">
+                      <span className="text-xs bg-[#0e1f3e]/10 text-[#0e1f3e] px-2 py-0.5 rounded font-medium">Math: {week.mathFocus}</span>
+                      <span className="text-xs bg-[#ca3433]/10 text-[#ca3433] px-2 py-0.5 rounded font-medium">English: {week.englishFocus}</span>
+                    </div>
+                  </div>
+                </div>
+                <ChevronDown className={`text-slate-400 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} size={20} />
+              </button>
+              {isOpen && (
+                <div className="px-5 pb-5 border-t border-slate-100">
+                  <div className="grid gap-3 mt-4">
+                    {week.blocks.map((block, i) => {
+                      const isMath = block.label.startsWith('MATH');
+                      const isInstruction = block.label.includes('Instruction');
+                      return (
+                        <div key={i} className={`rounded-lg p-4 ${isMath ? 'bg-slate-50' : 'bg-[#fdf2f2]'}`}>
+                          <div className="flex flex-wrap items-center gap-2 mb-2">
+                            <span className={`text-xs font-bold px-2 py-0.5 rounded ${isMath ? 'bg-[#0e1f3e] text-white' : 'bg-[#ca3433] text-white'}`}>
+                              {isMath ? 'MATH' : 'ENGLISH'}
+                            </span>
+                            <span className={`text-xs font-bold px-2 py-0.5 rounded ${isInstruction ? 'bg-slate-200 text-slate-700' : 'bg-green-100 text-green-800'}`}>
+                              {isInstruction ? 'INSTRUCTION' : 'PRACTICE'}
+                            </span>
+                            <span className="text-xs text-slate-500 ml-auto flex items-center gap-1">
+                              <Clock size={12} />
+                              {block.time}
+                            </span>
+                          </div>
+                          <p className="text-sm text-slate-700 leading-relaxed">{block.content}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Weekly Packet */}
+      <div className="mt-8 bg-[#f7e0e0] border-2 border-[#ca3433] rounded-xl p-6">
+        <h4 className="text-lg font-bold text-[#0e1f3e] mb-3">📦 Weekly Packet Includes</h4>
+        <div className="grid sm:grid-cols-2 gap-2">
+          {packetItems.map((item) => (
+            <div key={item} className="flex items-start gap-2">
+              <CheckCircle className="text-[#ca3433] flex-shrink-0 mt-0.5" size={16} />
+              <span className="text-sm text-slate-700">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function SatPrepSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
   const prepStripeLink = 'https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=f73ff19a-5304-11f1-a8e1-12a0879a85b1';
   const prepPrice = '$3,300';
@@ -361,6 +580,7 @@ function SatPrepSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
           </div>
           <div className="flex flex-wrap gap-3">
             <a href="#schedule" className="bg-[#0e1f3e] text-white px-5 py-3 rounded-lg font-semibold hover:bg-[#1b2f57] transition-colors">Schedule</a>
+            <a href="#curriculum" className="bg-[#0e1f3e] text-white px-5 py-3 rounded-lg font-semibold hover:bg-[#1b2f57] transition-colors">Curriculum</a>
             <a href="#pricing"  className="bg-[#ca3433] text-white px-5 py-3 rounded-lg font-semibold hover:bg-[#ac2c2a] transition-colors">Pricing</a>
             <button onClick={() => onOpenPayment('SAT Prep Course', prepPrice, prepStripeLink, prepScheduleDays.map(o => o.days))} className="bg-slate-100 text-slate-900 px-5 py-3 rounded-lg font-semibold hover:bg-slate-200 transition-colors">Enroll Now</button>
           </div>
@@ -395,6 +615,8 @@ function SatPrepSection({ onOpenPayment }: { onOpenPayment: OnOpenPayment }) {
           <p className="text-2xl font-bold">PRICE: $3,300</p>
         </div>
       </section>
+
+      <CurriculumSection />
 
       <section className="mb-10">
         <h3 className="text-3xl font-bold text-[#0e1f3e] mb-6">Why Join Our Program?</h3>
