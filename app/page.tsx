@@ -142,7 +142,6 @@ export default function HomePage() {
 type OnOpenPayment = (courseName: string, cashPrice: string, stripeLink: string, availableDates?: string[]) => void;
 
 const bootcamps = [
-  { title: 'MAY BOOTCAMP',       examLabel: 'For June 6 Exam',   sessions: [{ date: 'May 24, 2026', subject: 'MATH' }, { date: 'May 31, 2026', subject: 'ENGLISH' }] },
   { title: 'AUGUST BOOTCAMP',    examLabel: 'For Sep 12 Exam',   sessions: [{ date: 'Aug 30, 2026', subject: 'MATH' }, { date: 'Sep 6, 2026', subject: 'ENGLISH' }] },
   { title: 'SEPTEMBER BOOTCAMP', examLabel: 'For Oct 2 Exam',    sessions: [{ date: 'Sep 20, 2026', subject: 'MATH' }, { date: 'Sep 27, 2026', subject: 'ENGLISH' }] },
   { title: 'OCTOBER BOOTCAMP',   examLabel: 'For Nov 7 Exam',    sessions: [{ date: 'Oct 25, 2026', subject: 'MATH' }, { date: 'Nov 1, 2026', subject: 'ENGLISH' }] },
